@@ -31,7 +31,6 @@ impl Matrix {
                 result.data[i][j] = self.data[i][j] + other.data[i][j];
             }
         }
-
         result
     }
 
@@ -47,12 +46,14 @@ impl Matrix {
                 result.data[i][j] = self.data[i][j] - other.data[i][j];
             }
         }
-
         result
     }
-    
+
     pub fn multiply(&self, other: &Matrix) -> Matrix {
-        assert!(self.cols == other.rows, "# of cols in first matrix must match # of rows in second");
+        assert!(
+            self.cols == other.rows,
+            "# of cols in first matrix must match # of rows in second"
+        );
 
         let mut result = Matrix::new(self.rows, other.cols);
         for i in 0..self.rows {
@@ -62,7 +63,17 @@ impl Matrix {
                 }
             }
         }
+        result
+    }
 
+    pub fn transpose(&self) -> Matrix {
+        let mut result = Matrix::new(self.cols, self.rows);
+
+        for i in 0..self.rows {
+            for j in 0..self.cols {
+                result.data[j][i] = self.data[i][j];
+            }
+        }
         result
     }
 }

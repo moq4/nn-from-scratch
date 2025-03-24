@@ -12,9 +12,19 @@ fn main() {
     let add_result = m1.add(&m2);
     let sub_result = m1.subtract(&m2);
 
-    println!("Addition results");
+    println!("----Addition results----");
     add_result.print();
-
-    println!("Subtraction results");
+    println!("----Subtraction results----");
     sub_result.print();
+
+    let mut m4 = Matrix::new(2, 3);
+    m4.data = vec![vec![1.0, 2.0, 3.0], vec![4.0, 5.0, 6.0]];
+
+    let m_transposed = m4.transpose();
+    let multiply_result = m4.multiply(&m_transposed);
+
+    println!("----Transposed results----");
+    m_transposed.print();
+    println!("----Multiply results----");
+    multiply_result.print();
 }
