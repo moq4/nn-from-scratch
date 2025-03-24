@@ -50,4 +50,19 @@ impl Matrix {
 
         result
     }
+    
+    pub fn multiply(&self, other: &Matrix) -> Matrix {
+        assert!(self.cols == other.rows, "# of cols in first matrix must match # of rows in second");
+
+        let mut result = Matrix::new(self.rows, other.cols);
+        for i in 0..self.rows {
+            for j in 0..other.cols {
+                for k in 0..self.cols {
+                    result.data[i][j] += self.data[i][k] * other.data[k][j];
+                }
+            }
+        }
+
+        result
+    }
 }
