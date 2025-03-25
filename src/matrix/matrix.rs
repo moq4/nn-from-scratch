@@ -1,3 +1,5 @@
+use std::f64;
+
 pub struct Matrix {
     pub rows: usize,
     pub cols: usize,
@@ -18,6 +20,8 @@ impl Matrix {
             println!("{:?}", row);
         }
     }
+
+    // Basic math functions
 
     pub fn add(&self, other: &Matrix) -> Matrix {
         assert!(
@@ -72,6 +76,18 @@ impl Matrix {
         for i in 0..self.rows {
             for j in 0..self.cols {
                 result.data[j][i] = self.data[i][j];
+            }
+        }
+        result
+    }
+
+    // Activation functions
+
+    pub fn apply<F: Fn(f64) -> f64>(&self, func: F) -> Matrix {
+        let mut result = Matrix::new(self.rows, self.cols);
+        for i in 0..self.rows {
+            for j in 0..self.cols {
+                result.data[i][j] = func(self.data[i][j]);
             }
         }
         result

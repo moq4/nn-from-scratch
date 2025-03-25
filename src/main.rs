@@ -1,6 +1,7 @@
 mod matrix;
 
 use crate::matrix::matrix::Matrix;
+use crate::matrix::activation_functions::sigmoid;
 
 fn main() {
     let mut m1 = Matrix::new(2, 2);
@@ -27,4 +28,11 @@ fn main() {
     m_transposed.print();
     println!("----Multiply results----");
     multiply_result.print();
+
+    println!("----Test Sigmoid----");
+    let mut m_sigmoid = Matrix::new(2, 2);
+    m_sigmoid.data = vec![vec![0.5, -1.0], vec![2.0, -3.0]];
+
+    let activated = m_sigmoid.apply(sigmoid);
+    activated.print();
 }
