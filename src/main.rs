@@ -1,7 +1,7 @@
-mod matrix;
+mod nn;
 
-use crate::matrix::matrix::Matrix;
-use crate::matrix::activation_functions::*;
+use crate::nn::matrix::Matrix;
+use crate::nn::activation_functions::*;
 
 fn main() {
     let mut m1 = Matrix::new(2, 2);
