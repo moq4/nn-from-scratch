@@ -1,7 +1,7 @@
 mod matrix;
 
 use crate::matrix::matrix::Matrix;
-use crate::matrix::activation_functions::sigmoid;
+use crate::matrix::activation_functions::*;
 
 fn main() {
     let mut m1 = Matrix::new(2, 2);
@@ -34,5 +34,12 @@ fn main() {
     m_sigmoid.data = vec![vec![0.5, -1.0], vec![2.0, -3.0]];
 
     let activated = m_sigmoid.apply(sigmoid);
+    activated.print();
+
+    println!("----Test Relu----");
+    let mut m_relu = Matrix::new(2, 2);
+    m_relu.data = vec![vec![0.5, -1.0], vec![2.0, -3.0]];
+
+    let activated = m_relu.apply(relu);
     activated.print();
 }
