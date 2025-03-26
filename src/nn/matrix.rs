@@ -50,6 +50,7 @@ impl Matrix {
                 result.data[i][j] = self.data[i][j] - other.data[i][j];
             }
         }
+
         result
     }
 
@@ -91,5 +92,10 @@ impl Matrix {
             }
         }
         result
+    }
+
+    // Bias
+    pub fn add_scalar(&self, scalar: f64) -> Matrix {
+        self.apply(|x| x + scalar)
     }
 }

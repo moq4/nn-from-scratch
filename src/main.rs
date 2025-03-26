@@ -1,7 +1,8 @@
 mod nn;
 
-use crate::nn::matrix::Matrix;
+use crate::nn::matrix::*;
 use crate::nn::activation_functions::*;
+use crate::nn::layer::*;
 
 fn main() {
     let mut m1 = Matrix::new(2, 2);
@@ -42,4 +43,12 @@ fn main() {
 
     let activated = m_relu.apply(relu);
     activated.print();
+
+    println!("----Test Forward Pass----");
+    let mut m_forward_pass = Matrix::new(2, 1);
+    m_relu.data = vec![vec![0.1], vec![0.8]];
+    let layer = Layer::new(2, 1);
+
+    let foward_pass_result = layer.forward(&m_forward_pass);
+    foward_pass_result.print();
 }
