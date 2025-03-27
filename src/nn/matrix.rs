@@ -1,5 +1,6 @@
 use std::f64;
 
+#[derive(Clone)]
 pub struct Matrix {
     pub rows: usize,
     pub cols: usize,

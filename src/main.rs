@@ -3,6 +3,7 @@ mod nn;
 use crate::nn::matrix::*;
 use crate::nn::activation_functions::*;
 use crate::nn::layer::*;
+use crate::nn::neural_network::NeuralNetwork;
 
 fn main() {
     let mut m1 = Matrix::new(2, 2);
@@ -51,4 +52,10 @@ fn main() {
 
     let foward_pass_result = layer.forward(&m_forward_pass);
     foward_pass_result.print();
+
+    println!("----Neural Net Impl----");
+    let input = Matrix { rows: 2, cols: 1, data: vec![vec![0.1], vec![0.8]] };
+    let nn = NeuralNetwork::new(vec![2, 3, 1]); // 2-input, 3-hidden, 1-output
+    let output = nn.forward(&input);
+    output.print();
 }
